@@ -1,0 +1,26 @@
+{
+  "name": "pi-sync-models",
+  "version": "0.2.0",
+  "description": "Sync OpenAI-compatible provider model IDs into Pi models.json with intelligent context window inference, capability upgrades, and deprecated model pruning",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["pi-package", "pi-extension", "models", "model-discovery", "openai"],
+  "files": ["extensions", "README.md", "LICENSE"],
+  "pi": { "extensions": ["./extensions/sync-models.ts"] },
+  "engines": { "node": ">=20" },
+  "dependencies": { "jsonc-parser": "^3.3.1" },
+  "peerDependencies": { "@earendil-works/pi-coding-agent": "*" },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.87.1",
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "verify": "npm run check && npm test && npm pack --dry-run",
+    "prepublishOnly": "npm run check && npm test"
+  },
+  "publishConfig": { "access": "public" }
+}
